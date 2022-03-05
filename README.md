@@ -5,14 +5,9 @@ Uses [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) to 
 The program reads data from a file `watchlist.json`, which has the following structure:
 ```
 {
-    "item1": { 
-        "url": "...",
-        "full price": "...",
-        "reduced price": "...",
-        "reduction": "..."
-    },
+    "item": url,
     ...
 }
 ```
 
-Zalando.de uses very weird class names, and they are different for every item. There needs to be another way to detect that.
+The program finds the full price of each item, as well as their reduced price (if any).

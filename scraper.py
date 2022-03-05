@@ -10,19 +10,17 @@ watchlist = json.load(f)
 f.close()
 
 for item in watchlist:
-    contents = watchlist[item]
-    
-    page = requests.get(contents['url'], timeout=10, headers=HEADERS)
+    page = requests.get(watchlist[item], timeout=10, headers=HEADERS)
     soup = BeautifulSoup(page.content, 'html.parser')
 
-    full_price = soup.find_all('span', class_=contents['full price'])[0].string
-    reduction = soup.find_all('span', class_=contents['reduction']) if 'reduction' in contents else list()
-
-    if (len(reduction) == 0):
+    prices = soup.find_all('span', string=lambda text: text and '€' in text)
+    if len(prices) == 1:
+        price = prices[0].string
         output = item + ': ' + full_price
     else:
-        reduced_price = soup.find_all('span', class_=contents['reduced price'])[0].string
-        output = item + ': ' + reduced_price + ' (reduction of ' + reduction[0].string.split(' ')[0] + ')'
-    
+        reduced_price = prices[0].string
+        full_price = prices[1].string
+        reduction = soup.find_all('span', string=lambda text: text and 'sparen' in text)[0].string.split(' ')[0]
+        output = item + ': ' + reduced_price + ' (-' + reduction + ')'
 
     print(output)
