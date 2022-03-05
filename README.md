@@ -1,6 +1,6 @@
 # zalando-price-tracker
 
-Uses [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) to scrape price data from Zalando.de.
+Uses [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) to scrape price data from Zalando.
 
 The program reads data from a file `watchlist.json`, which has the following structure:
 ```
