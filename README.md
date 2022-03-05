@@ -1,4 +1,4 @@
-# zalando-price-tracker
+# Zalando price tracker
 
 Uses [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) to scrape price data from Zalando.
 
@@ -11,3 +11,7 @@ The program reads data from a file `watchlist.json`, which has the following str
 ```
 
 The program finds the full price of each item, as well as their reduced price (if any).
+
+## Usage
+
+`python3 price_tracker.py`
